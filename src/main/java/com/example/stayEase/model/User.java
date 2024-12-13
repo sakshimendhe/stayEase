@@ -26,5 +26,5 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role; // Role imported from the separate file
+    private Role role;
 }

@@ -22,9 +22,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Disable CSRF
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/public/**","/auth/register","/auth/login").permitAll() // Public endpoints
+                .requestMatchers("/api/public/**","/auth/register","/auth/login").permitAll() 
                  .requestMatchers(HttpMethod.GET, "/api/hotels").permitAll()
             .requestMatchers(HttpMethod.POST, "/api/hotels").hasRole("ADMIN")
             .requestMatchers(HttpMethod.PUT, "/api/hotels/**").hasRole("HOTEL_MANAGER")
@@ -33,7 +33,7 @@ public class SecurityConfig {
             .requestMatchers(HttpMethod.DELETE, "/api/bookings/**").hasRole("HOTEL_MANAGER")
             .anyRequest().authenticated()
             )
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // JWT filter
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); 
 
         return http.build();
     }

@@ -13,10 +13,6 @@ public class BookingController {
 
     private final BookingService bookingService;
 
-    @PostMapping("/{hotelId}")
-    public ResponseEntity<Booking> bookRoom(@PathVariable Long hotelId, @AuthenticationPrincipal User customer) {
-        return ResponseEntity.ok(bookingService.bookRoom(hotelId, customer));
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> cancelBooking(@PathVariable Long id, @AuthenticationPrincipal User manager) {

@@ -32,7 +32,6 @@ public class AuthController {
         User user = userService.findByEmail(request.getEmail());
     
         if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            // Generate token with email and role
             String token = jwtUtil.generateToken(user.getEmail(), user.getRole().toString());
             return ResponseEntity.ok(new AuthResponse(token));
         } else {
